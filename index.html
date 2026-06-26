@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מדריך מלא — פלטפורמת הלמידה של סיון מזר</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #f5f7ff; color: #2d2d2d; font-size: 16px; line-height: 1.7; }
+    .page { max-width: 800px; margin: 0 auto; padding: 32px 20px 80px; }
+    .cover { text-align: center; padding: 36px 24px 28px; background: linear-gradient(135deg, #4361EE 0%, #7c3aed 100%); border-radius: 20px; color: white; margin-bottom: 40px; }
+    .cover h1 { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+    .cover .cover-sub { font-size: 18px; font-weight: 500; color: #ffffff; margin-bottom: 10px; }
+    .cover .cover-credit { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.75); }
+    section { background: white; border-radius: 16px; padding: 28px 28px 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section-title { font-size: 19px; font-weight: 700; color: #4361EE; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #eef0ff; padding-bottom: 10px; }
+    .section-title .icon { font-size: 22px; }
+    h3 { font-size: 15px; font-weight: 600; color: #333; margin: 16px 0 6px; }
+    p { margin-bottom: 10px; color: #444; font-size: 15px; }
+    ul { padding-right: 20px; margin-bottom: 10px; }
+    li { font-size: 15px; color: #444; margin-bottom: 6px; }
+    .steps { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .step { display: flex; align-items: flex-start; gap: 12px; background: #f8f9ff; border-radius: 10px; padding: 12px 14px; }
+    .step-num { min-width: 28px; height: 28px; background: #4361EE; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+    .step-text { font-size: 14.5px; color: #333; line-height: 1.55; }
+    .step-text strong { color: #4361EE; }
+    .badge { display: inline-block; background: #eef0ff; color: #4361EE; border-radius: 6px; padding: 2px 8px; font-size: 13px; font-weight: 600; margin: 0 2px; }
+    .badge-green { display: inline-block; background: #f0fdf4; color: #16a34a; border-radius: 6px; padding: 2px 8px; font-size: 13px; font-weight: 600; margin: 0 2px; }
+    .badge-amber { display: inline-block; background: #fff8e6; color: #b45309; border-radius: 6px; padding: 2px 8px; font-size: 13px; font-weight: 600; margin: 0 2px; }
+    .tip { background: #fff8e6; border-right: 4px solid #f59e0b; border-radius: 8px; padding: 10px 14px; font-size: 14px; color: #555; margin-top: 12px; }
+    .tip strong { color: #b45309; }
+    .privacy { background: #f0fdf4; border-right: 4px solid #22c55e; border-radius: 8px; padding: 10px 14px; font-size: 14px; color: #15803d; margin-top: 12px; }
+    .privacy strong { color: #166534; }
+    .info-box { background: #eef0ff; border-right: 4px solid #4361EE; border-radius: 8px; padding: 10px 14px; font-size: 14px; color: #333; margin-top: 12px; }
+    .info-box strong { color: #4361EE; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .card { background: #f8f9ff; border-radius: 10px; padding: 14px 16px; border: 1px solid #e0e4ff; }
+    .card-title { font-size: 14px; font-weight: 700; color: #4361EE; margin-bottom: 6px; }
+    .card p { font-size: 13.5px; margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+    th { background: #eef0ff; color: #4361EE; font-weight: 700; padding: 10px 12px; text-align: right; border: 1px solid #dde2ff; }
+    td { padding: 9px 12px; border: 1px solid #eee; color: #444; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafbff; }
+    .toc { display: flex; flex-direction: column; gap: 8px; }
+    .toc-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #f8f9ff; border-radius: 8px; font-size: 14.5px; color: #333; text-decoration: none; border: 1px solid #e8ebff; transition: background 0.15s; }
+    .toc-item:hover { background: #eef0ff; }
+    .toc-icon { font-size: 18px; min-width: 24px; }
+    .toc-num { color: #aaa; font-size: 12px; min-width: 20px; }
+    .closing { text-align: center; font-size: 22px; font-weight: 700; color: #4361EE; padding: 24px 0 8px; }
+    .footer { text-align: center; margin-top: 32px; padding: 28px 20px; background: #1a1f3c; border-radius: 16px; color: #a0a8c8; font-size: 13.5px; line-height: 2; }
+    .footer-name { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 4px; }
+    .footer-links { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+    .footer-links a { color: #7c8fc7; text-decoration: none; font-size: 13px; }
+    .footer-links a:hover { color: #aab4e0; }
+    .footer-sep { color: #3a4060; }
+    @media (max-width: 560px) { section { padding: 20px 18px; } .two-col { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <h1>מדריך מלא — פלטפורמת הלמידה של סיון מזר</h1>
+    <p class="cover-sub">מדריך תפעול מקיף ומתעדכן | ניהול, הרשמה, קורסים ו-AI</p>
+    <p class="cover-credit">נוצר על ידי: נירה טל | מתודה פתרונות AI &nbsp;·&nbsp; עבור: סיון מזר</p>
+  </div>
+
+  <section>
+    <div class="section-title"><span class="icon">📋</span> תוכן עניינים</div>
+    <div class="toc">
+      <a href="#overview" class="toc-item"><span class="toc-num">01</span><span class="toc-icon">🗺️</span> סקירה כללית — מה המערכת עושה</a>
+      <a href="#roles" class="toc-item"><span class="toc-num">02</span><span class="toc-icon">👥</span> סוגי משתמשים ומה כל אחד רואה</a>
+      <a href="#registration" class="toc-item"><span class="toc-num">03</span><span class="toc-icon">🚀</span> כיצד מתאמן נרשם ומתחבר</a>
+      <a href="#personal-space" class="toc-item"><span class="toc-num">04</span><span class="toc-icon">🔒</span> איך מרחב אישי מוקצה למתאמן</a>
+      <a href="#trainee-view" class="toc-item"><span class="toc-num">05</span><span class="toc-icon">🎓</span> מה המתאמן רואה — חוויית הלמידה</a>
+      <a href="#ai-assistant" class="toc-item"><span class="toc-num">06</span><span class="toc-icon">🤖</span> ה-AI Assistant — איך עובד</a>
+      <a href="#admin" class="toc-item"><span class="toc-num">07</span><span class="toc-icon">🛠️</span> פאנל הניהול — כל הפיצ'רים</a>
+      <a href="#course-types" class="toc-item"><span class="toc-num">08</span><span class="toc-icon">📚</span> סוגי קורסים ומרחבים</a>
+      <a href="#knowledge-base" class="toc-item"><span class="toc-num">09</span><span class="toc-icon">🧠</span> מאגר הידע ל-AI</a>
+      <a href="#community" class="toc-item"><span class="toc-num">10</span><span class="toc-icon">📊</span> מעקב לומדים ודשבורד קהילה</a>
+      <a href="#future" class="toc-item"><span class="toc-num">11</span><span class="toc-icon">🔮</span> מה מתוכנן להמשך</a>
+    </div>
+  </section>
+
+  <section id="overview">
+    <div class="section-title"><span class="icon">🗺️</span> 01 — סקירה כללית</div>
+    <p>פלטפורמת הלמידה של סיון היא אתר ווב פרטי המיועד ללקוחות ומתאמנים של סיון מזר. המערכת מאפשרת:</p>
+    <ul>
+      <li>צפייה בקורסים וסדנאות מוקלטים (YouTube משובץ)</li>
+      <li>מרחב למידה אישי לכל מתאמן — עם תוכן שנבחר רק עבורו</li>
+      <li>קורסי קבוצה למפגשות ומסגרות משותפות</li>
+      <li>קורסים ציבוריים לכל קהילת הלומדים</li>
+      <li>AI Assistant המבוסס על חומרי הקורס ומתודולוגיית סיון מזר | זום אין זום אאוט</li>
+      <li>מעקב התקדמות אוטומטי</li>
+    </ul>
+    <div class="info-box"><strong>חשוב לדעת:</strong> המערכת סגורה. כל מתאמן צריך חשבון כדי לגשת אליה. אין גישה ציבורית ללא התחברות.</div>
+  </section>
+
+  <section id="roles">
+    <div class="section-title"><span class="icon">👥</span> 02 — סוגי משתמשים</div>
+    <div class="two-col">
+      <div class="card"><div class="card-title">🛡️ מנהלת (Admin) — סיון</div><p>גישה לפאנל הניהול המלא: יצירת קורסים, הקצאת מתאמנים, עריכת שיעורים, מאגר ידע, ומעקב קהילה.</p></div>
+      <div class="card"><div class="card-title">🎓 מתאמן/ת (Trainee)</div><p>רואה רק את מה שהוקצה עבורו: קורסים ציבוריים + המרחב האישי שלו (אם קיים). לא רואה ניהול.</p></div>
+    </div>
+    <div class="tip" style="margin-top:14px;"><strong>איך המערכת מבדילה?</strong> בטבלת <code>profiles</code> ב-Supabase יש שדה <code>role</code>. ערך <code>admin</code> = סיון. כל שאר המשתמשים הם מתאמנים.</div>
+  </section>
+
+  <section id="registration">
+    <div class="section-title"><span class="icon">🚀</span> 03 — כיצד מתאמן נרשם ומתחבר</div>
+    <p>אין הרשמה עצמאית. סיון שולחת ידנית את הקישור. כל מתאמן/ת עובר את הזרימה הזו:</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text">סיון שולחת למתאמן/ת את כתובת ההרשמה: <strong>/auth/sign-up</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">המתאמן/ת ממלא/ת: <strong>שם מלא, אימייל, סיסמה</strong> ולוחץ/ת "כניסה ראשונה"</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">מגיע <strong>מייל אימות אוטומטי</strong> מ-Supabase — המתאמן/ת צריך/ה ללחוץ על הקישור במייל לפני שיוכל/תוכל להתחבר</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">לאחר האימות: כניסה דרך <strong>/auth/login</strong> עם האימייל והסיסמה שנבחרה</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">המתאמן/ת מגיע/ה ל-<strong>/dashboard/courses</strong> — מרחב הלמידה שלו/ה</div></div>
+    </div>
+    <div class="tip" style="margin-top: 14px;"><strong>שכחת סיסמה?</strong> קיים דף <code>/auth/forgot-password</code> — Supabase שולח מייל לאיפוס תוך כמה דקות.</div>
+  </section>
+
+  <section id="personal-space">
+    <div class="section-title"><span class="icon">🔒</span> 04 — הקצאת מרחב אישי למתאמן</div>
+    <p>המערכת לא מחברת מתאמן/ת לקורס אישי אוטומטית — <strong>סיון עושה זאת ידנית</strong> אחרי שהמתאמן/ת נרשם/ה. הסדר חשוב:</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>קודם</strong> — המתאמן/ת נרשם/ת ומאמת/ת אימייל (חייב לקרות לפני)</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text">סיון נכנסת ל-<strong>פאנל הניהול</strong> ← "יצירת קורס חדש"</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text">בשדה "סוג המרחב" בוחרת: <strong>מרחב אישי ללקוח</strong></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">מופיעה <strong>רשימה נפתחת</strong> עם כל המשתמשים הרשומים — בוחרת את המתאמן/ת הנכון/ה</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">לוחצת "יצירת קורס" — המערכת שומרת את <strong>ה-ID</strong> של המתאמן/ת בשדה <code>client_id</code></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-text">בפעם הבאה שהמתאמן/ת נכנס/ת — הקורס מופיע תחת <strong>"המרחב האישי של [שם פרטי]"</strong></div></div>
+    </div>
+    <div class="privacy"><strong>פרטיות אוטומטית:</strong> Supabase מסנן כל שאילתה לפי ה-ID של המשתמש המחובר. מתאמן/ת לא יכול/ה לראות קורסים של מתאמן/ת אחר/ת — אפילו אם ינחשו את הכתובת.</div>
+    <div class="tip" style="margin-top: 10px;"><strong>שכחת להוסיף קורס לפני שנרשם/ה?</strong> אפשר לערוך קורס קיים ולשנות לו את סוג המרחב ואת המתאמן/ת המשויכ/ת.</div>
+  </section>
+
+  <section id="trainee-view">
+    <div class="section-title"><span class="icon">🎓</span> 05 — חוויית הלמידה של המתאמן/ת</div>
+    <h3>מה רואים בדף הראשי (/dashboard/courses)</h3>
+    <p>הדף מחולק לשניים. <strong>בכל סקשן</strong> — סדנאות ווובינרים מופיעים תמיד <em>לפני</em> קורסים מתמשכים:</p>
+    <table>
+      <tr><th>אזור</th><th>מה מופיע</th><th>מתי מוצג</th></tr>
+      <tr><td><strong>המרחב האישי של [שם פרטי]</strong></td><td>קורסים שהוקצו לאותו מתאמן/ת אישית + קבוצות שבהן חבר/ה</td><td>רק אם יש קורס עם <code>client_id</code> של המשתמש</td></tr>
+      <tr><td><strong>קורסים וסדנאות הקהילה</strong></td><td>כל הקורסים הציבוריים</td><td>תמיד (אם יש קורסים ציבוריים)</td></tr>
+    </table>
+    <h3>תוויות על כרטיסי קורס</h3>
+    <ul>
+      <li><span class="badge-green">ציבורי</span> — קורס פתוח לכל הקהילה</li>
+      <li><span class="badge-amber">🔒 מרחב אישי</span> — קורס שהוקצה אישית (כתום)</li>
+      <li><span class="badge">👥 קבוצה: [שם]</span> — קורס קבוצתי סגור (כחול)</li>
+    </ul>
+    <h3>מה רואים בתוך שיעור</h3>
+    <ul>
+      <li>סרטון YouTube משובץ (Unlisted — לא מופיע בחיפוש)</li>
+      <li>כפתור <strong>"השיעור הושלם, לשיעור הבא"</strong> — מסמן התקדמות</li>
+      <li>סיידבר עם רשימת כל השיעורים + סימון ✓ לכל שיעור שהושלם</li>
+      <li>כפתור <strong>AI Assistant</strong> — שיחה עם בינה מלאכותית על בסיס תוכן השיעור</li>
+    </ul>
+    <h3>הבדל בין קורס לסדנה</h3>
+    <div class="two-col">
+      <div class="card"><div class="card-title">📚 קורס מתמשך</div><p>מספר שיעורים, ניווט קדימה/אחורה, סיידבר, מעקב התקדמות לכל שיעור.</p></div>
+      <div class="card"><div class="card-title">🎯 סדנה / וובינר</div><p>שיעור חד-פעמי, הקלטה בודדת. כפתור "סיום סדנה" וחזרה למרחב הלמידה. ללא סיידבר ניווט.</p></div>
+    </div>
+  </section>
+
+  <section id="ai-assistant">
+    <div class="section-title"><span class="icon">🤖</span> 06 — ה-AI Assistant</div>
+    <p>בכל שיעור מופיע כפתור <span class="badge">✨ AI Assistant</span> שפותח צ'אט חכם המבוסס על חומרי הקורס ומתודולוגיית סיון מזר | זום אין זום אאוט.</p>
+    <h3>מה ה-AI יודע?</h3>
+    <ul>
+      <li><strong>תמלול השיעור</strong> — אם הוזן על ידי סיון באדמין</li>
+      <li><strong>מאגר הידע הגלובלי</strong> — מסמכי מתודולוגיה שסיון הוסיפה (ראו סעיף 09)</li>
+      <li><strong>הקשר הספציפי לשיעור</strong> — שם הקורס, שם השיעור</li>
+    </ul>
+    <h3>מה המתאמן/ת יכול/ה לעשות?</h3>
+    <ul>
+      <li>לשאול שאלות על תוכן השיעור</li>
+      <li>לבקש הסברים, סיכומים, תרגילים</li>
+      <li>לקבל תשובות בפורמט מסודר (רשימות, כותרות)</li>
+    </ul>
+    <h3>מה סיון רואה?</h3>
+    <p>בתצוגת Admin בשיעור יש dropdown לבחירת תלמיד/ה — סיון יכולה לראות את שיחות ה-AI של כל מתאמן/ת (קריאה בלבד, לא משתתפת בשיחה).</p>
+    <p>בנוסף, סיון יכולה <strong>לדייק ולערוך את תשובות ה-AI</strong> במאגר הידע — להוסיף, לתקן ולהעמיק — בהתאם לתיאוריות ולשיטות העבודה הייחודיות שלה.</p>
+    <div class="tip"><strong>ללא תמלול — ה-AI עדיין עובד,</strong> אבל מסתמך רק על מאגר הידע הגלובלי. כדי לשפר — להוסיף תמלול בעריכת השיעור באדמין.</div>
+  </section>
+
+  <section id="admin">
+    <div class="section-title"><span class="icon">🛠️</span> 07 — פאנל הניהול (Admin)</div>
+    <p>נגיש רק לסיון. כניסה: <span class="badge">/dashboard/admin</span> (הדשבורד מנתב אוטומטית לשם בכניסה).</p>
+    <h3>יצירת קורס חדש</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">A</div><div class="step-text"><strong>שם + תיאור</strong> — שם הקורס (חובה) ותיאור קצר</div></div>
+      <div class="step"><div class="step-num">B</div><div class="step-text"><strong>תמונת כריכה</strong> — העלאת קובץ תמונה (preview מוצג מיד)</div></div>
+      <div class="step"><div class="step-num">C</div><div class="step-text"><strong>סוג:</strong> "קורס מתמשך" או "סדנה / וובינר (שיעור יחיד)"</div></div>
+      <div class="step"><div class="step-num">D</div><div class="step-text"><strong>סוג המרחב:</strong> ציבורי / מרחב אישי ללקוח / קורס קבוצה פרטית</div></div>
+      <div class="step"><div class="step-num">E</div><div class="step-text"><strong>פרטי קשר</strong> (מופיע רק אם המרחב אינו ציבורי) — למרחב אישי: "פרטי קשר — מתאמן/ת אישי/ת" | לקבוצה: "רשימת תפוצה". שדה חופשי לשמות, מספרים, מיילים</div></div>
+      <div class="step"><div class="step-num">F</div><div class="step-text"><strong>קישורי וידאו</strong> — קישורי YouTube, שורה לכל סרטון. אפשר גם פלייליסט שלם. נתמך: music.youtube.com ו-/live/ID</div></div>
+    </div>
+    <div class="tip" style="margin-top: 12px;"><strong>קישורי YouTube חייבים להיות Public או Unlisted.</strong> תמונת ה-thumbnail נשמרת אוטומטית מ-YouTube לכל שיעור שנוצר.</div>
+    <h3>ניהול קורסים קיימים</h3>
+    <ul>
+      <li><strong>גרירה</strong> — שינוי סדר הקורסים (drag &amp; drop)</li>
+      <li><strong>עריכה</strong> — שם, תיאור, תמונה, סוג מרחב, פרטי קשר, חברי קבוצה (הרשימה מועברת גם בעריכה)</li>
+      <li><strong>מחיקה</strong> — מוחק את הקורס וכל השיעורים שלו</li>
+    </ul>
+    <h3>ניהול שיעורים בתוך קורס</h3>
+    <p>ליד כל שיעור: <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;vertical-align:middle;margin-left:4px;"></span> ירוק = יש תמלול | <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d1d5db;vertical-align:middle;margin-left:4px;"></span> אפור = אין תמלול.</p>
+    <ul>
+      <li><strong>גרירה</strong> — שינוי סדר שיעורים</li>
+      <li><strong>עריכת שיעור:</strong> שם, קישור YouTube, thumbnail (URL+preview), תמלול/עזר ל-AI, מחיקת שיעור</li>
+    </ul>
+    <h3>תצוגת Preview לסיון</h3>
+    <p>כשסיון נכנסת ל-<code>/dashboard/courses</code>, היא רואה <strong>את כל המרחבים הפרטיים</strong> של כל המתאמנים — עם תוויות ברורות.</p>
+    <div class="tip"><strong>תמלול = מזון ל-AI.</strong> כשמוסיפים תמלול לשיעור, ה-AI יכול לענות על שאלות ספציפיות מהסרטון.</div>
+  </section>
+
+  <section id="course-types">
+    <div class="section-title"><span class="icon">📚</span> 08 — סוגי קורסים ומרחבים</div>
+    <h3>סוגי קורסים</h3>
+    <table>
+      <tr><th>סוג</th><th>מתי להשתמש</th><th>מה שונה בחוויה</th></tr>
+      <tr><td><span class="badge">קורס מתמשך</span></td><td>תכנית לווי, סדרת הרצאות, תוכן לאורך זמן</td><td>ניווט שיעור הקודם/הבא, סיידבר, מעקב התקדמות</td></tr>
+      <tr><td><span class="badge-amber">סדנה / וובינר</span></td><td>שיעור חד-פעמי, הקלטה בודדת</td><td>שיעור אחד, כפתור "סיום סדנה"</td></tr>
+    </table>
+    <h3>סוגי מרחבים</h3>
+    <table>
+      <tr><th>מרחב</th><th>מי רואה</th><th>מתי להשתמש</th></tr>
+      <tr><td><span class="badge-green">ציבורי</span></td><td>כל הלומדים הרשומים</td><td>קורסים לכל הקהילה</td></tr>
+      <tr><td><span class="badge-amber">אישי ללקוח</span></td><td>מתאמן/ת ספציפי/ת בלבד</td><td>הקלטות אישיות, תוכן מותאם לאדם</td></tr>
+      <tr><td><span class="badge">קבוצה פרטית</span></td><td>חברי הקבוצה שנבחרו</td><td>מסגרת קבוצתית, קורס סגור</td></tr>
+    </table>
+  </section>
+
+  <section id="knowledge-base">
+    <div class="section-title"><span class="icon">🧠</span> 09 — מאגר הידע ל-AI</div>
+    <p>אוסף מסמכים שסיון כותבת שה-AI משתמש בהם בכל שיחה. שומר <strong>מתודולוגיה, גישה טיפולית, מושגי מפתח</strong> שה-AI צריך להכיר.</p>
+    <h3>איך זה עובד?</h3>
+    <ul>
+      <li>תוכן השיעור (תמלול אם קיים)</li>
+      <li><strong>כל הרשומות במאגר הידע</strong> — כהקשר רקע לכל שאלה</li>
+    </ul>
+    <h3>פעולות באדמין</h3>
+    <ul>
+      <li><strong>הוספה</strong> — כותרת + תוכן (Markdown)</li>
+      <li><strong>עריכה</strong> — שינוי תוכן קיים</li>
+      <li><strong>מחיקה</strong> — הסרת רשומה</li>
+    </ul>
+    <div class="tip"><strong>דוגמאות לתוכן שכדאי להוסיף:</strong> שיטת זום אין זום אאוט, מושגים מרכזיים, שאלות ותשובות ויזואליות, גישה לתזונה / תנועה / מנטליות.</div>
+  </section>
+
+  <section id="community">
+    <div class="section-title"><span class="icon">📊</span> 10 — מעקב לומדים ודשבורד קהילה</div>
+    <table>
+      <tr><th>עמודה</th><th>משמעות</th></tr>
+      <tr><td>שם + אימייל</td><td>פרטי המתאמן/ת</td></tr>
+      <tr><td>שיעורים שהושלמו</td><td>כמה שיעורים לח/צה "השלמתי" עליהם</td></tr>
+      <tr><td>אחוז השלמה</td><td>מחושב מכלל השיעורים הגלויים למשתמש</td></tr>
+      <tr><td>סטטוס</td><td><span class="badge-green">פעיל/ה</span> = נכנס/ה לאחרונה | <span style="display:inline-block;background:#fef2f2;color:#dc2626;border-radius:6px;padding:2px 8px;font-size:13px;font-weight:600;">תקוע/ה</span> = לא פעיל/ה מעל שבוע</td></tr>
+    </table>
+    <h3>התראת "תקועים"</h3>
+    <p>מתאמנים שלא נכנסו מעל 7 ימים מסומנים אוטומטית — כדי שסיון תדע ליזום קשר.</p>
+    <div class="info-box"><strong>מה עוקבים:</strong> לכל שיעור שמתאמן/ת לוחץ/ת "הושלם" — נרשמת רשומה ב-<code>user_progress</code> עם תאריך ושעה.</div>
+  </section>
+
+  <section id="future">
+    <div class="section-title"><span class="icon">🔮</span> 11 — מה מתוכנן להמשך</div>
+    <h3>תוכן ושיווק</h3>
+    <table>
+      <tr><th>פיצ'ר</th><th>תיאור</th></tr>
+      <tr><td>עמוד ציבורי</td><td>דף שיווקי פתוח לכולם — קורסים קיימים, קרובים, ריטריטים וסדנאות, ללא כניסה</td></tr>
+      <tr><td>תוכן ויזואלי אינטגרטיבי</td><td>ערכות הדרכה וטיפים, שאלות ותשובות ויזואליות, מידע על השיטה</td></tr>
+      <tr><td>מידע על השיטה</td><td>עמוד ייעודי לזום אין זום אאוט — הסבר השיטה, הרקע, עדויות</td></tr>
+      <tr><td>פרסומים ואירועים</td><td>פרסום ריטריטים, קורסים וסדנאות קרובות ישירות מהפלטפורמה</td></tr>
+    </table>
+    <h3>כלים וטכנולוגיה</h3>
+    <table>
+      <tr><th>פיצ'ר</th><th>תיאור</th></tr>
+      <tr><td>צירוף קבצים ל-AI</td><td>יאפשר למתאמנים לשלוח קבצים לצ'אט ה-AI (מסומן "בקרוב" בממשק)</td></tr>
+      <tr><td>מערכת תשלומים</td><td>גישה ידנית כרגע — עתידי: סליקה ורכישת גישה לקורסים</td></tr>
+      <tr><td>פלטפורמת היכרויות</td><td>חיבור לפלטפורמה ייחודית להיכרויות לאחר גירושים — מוצר בבנייה</td></tr>
+      <tr><td>דיווח תקלות</td><td>הדף קיים (/dashboard/admin/bugs) — מיועד לטופס דיווח פנימי</td></tr>
+    </table>
+  </section>
+
+  <div class="closing">✨ המערכת בנויה, עובדת, ומוכנה לשימוש</div>
+
+  <div class="footer">
+    <div class="footer-name">נירה טל | מתודה פתרונות AI</div>
+    <div class="footer-links">
+      <span>© כל הזכויות שמורות</span>
+      <span class="footer-sep">|</span>
+      <a href="tel:0542215222">054-2215222</a>
+      <span class="footer-sep">|</span>
+      <a href="mailto:nira.tal@metoda.ai">nira.tal@metoda.ai</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
